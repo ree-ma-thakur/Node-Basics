@@ -17,11 +17,28 @@ const server = http.createServer((req, res) => {
     return res.end(); // return is added to get out of the statement
   }
   if (url === "/message" && method === "POST") {
-    fs.writeFileSync("message.txt", "DUMMY");
-    res.statusCode = 302;
-    res.setHeader("Location", "/");
-    return res.end();
+    const body = [];
+    //  to get request data
+    //  on allows us to listen to certain events (data event etc); data event is fired whenever new chunk is ready to be read; 1st argument is event, 2nd is function that should be executed for every data event (similar to createServer)
+    req.on("data", (chunk) => {
+      // console.log(chunk);
+      body.push(chunk);
+    });
+    //  end will run when parsing is done
+    // node will not run this funtion immediately but it will simply add new event listener & manage it internally, it will be called when parsing the request the done, it will not pause the other code execution
+    return req.on("end", () => {
+      const parsedBody = Buffer.concat(body).toString();
+      // console.log(parsedBody);
+      const message = parsedBody.split("=")[1];
+      // fs.writeFileSync("message.txt", message);
+      fs.writeFile("message.txt", message, (err) => {
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
+        return res.end();
+      });
+    });
   }
+  // this code will run before the 'end' callback function if we didn't add return to above 'end' req.on
   res.setHeader("Content-Type", "text/html");
   res.write("<html>");
   res.write("<head><title>My first page</title></head>");

@@ -4,6 +4,7 @@
 
 - app.js or server.js is root file that makes our node js application
 - In this we will create server
+- run using node app.js
 - There are core modules in nodejs (by default)
   - fs (file system)
   - path (helps in constructing path, paths to files or file system that work on any OS)
@@ -24,3 +25,14 @@
 
 - GET request is automatically sent when we click link or enter url
 - POST request has to be set up by us by creating form
+
+# Parsing requet bodies
+
+- Incoming data is sent as stream of data that JS knows but JS doesn't
+- ![alt text](image.png)
+- Buffer is a constrcut that allows us to hold multiple chunks & work with them before they are released once we are done
+
+# Blocking & non blocking code
+
+- fs.writeFileSync block code execution until file is created; even no incoming requests will be handled until file is completely created; It acceps the path & data as arguments
+- fs.writeFile does not block the code execution; it takes 3rd argument also i.e a callback that should be executed when file creation is done
