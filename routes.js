@@ -36,6 +36,7 @@ const requestHandler = (req, res) => {
       });
     });
   }
+
   // this code will run before the 'end' callback function if we didn't add return to above 'end' req.on
   res.setHeader("Content-Type", "text/html");
   res.write("<html>");

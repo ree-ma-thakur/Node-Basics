@@ -43,3 +43,47 @@
 - Full Node.js Reference (for all core modules): https://nodejs.org/dist/latest/docs/api/
 - More about the Node.js Event Loop: https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
 - Blocking and Non-Blocking Code: https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
+
+# NPM scripts
+
+- We can define some scripts in nodejs using npm
+- npm init
+- Set app.js as entry point file
+- Add this to scipts in package.json : "start": "node app.js" (start is special reserved keyword) - npm stast is same as npm run start because start is reserved keyword for this
+- If we add another "start-server": "node app.js" - for this we have: npm run start-server not npm start-server
+
+# Installing 3 party packages (nodemon)
+
+- ![alt text](image-1.png)
+- After making changes to our code we save it, exit the terminal & restart the server to see changes
+- To get instant changes without quitting the server we install 3rd party 'nodemon'
+- npm i nodemon --save-dev
+- We wil change the start script from node app.js to nodemon app.js
+
+# Global, core & 2rd party modeules
+
+- Global Features vs Core Modules vs Third-Party Modules
+  - Global features: Keywords like const or function but also some global objects like process
+  - Core Node.js Modules: Examples would be the file-system module ("fs"), the path module ("path") or the Http module ("http")
+  - Third-party Modules: Installed via npm install - we can add any kind of feature to our app via this way
+    - Global features are always available, we don't need to import them into the files where we want to use them.
+    - Core Node.js Modules don't need to be installed (NO npm install is required) but we need to import them when we want to use features exposed by them. Example:
+      - const fs = require('fs');
+      - We can now use the fs object exported by the "fs" module.
+    - Third-party Modules need to be installed (via npm install in the project folder) AND imported. Example:
+      - npm install --save express-session
+      - In code file (e.g. app.js)
+      - const sessions = require('express-session');
+
+# Type of Errors
+
+- Syntax Errors: If we have typo in our code or we forget any closing curly bracket or anything
+- Runtime Errors: When we try to execute some code which will just break when it runs
+- Logical Errors: App just doesn't work the way it should, techincally a logical issue
+
+# Debugging: https://code.visualstudio.com/docs/nodejs/nodejs-debugging
+
+# Useful resources:
+
+- More on debugging Node.js: https://nodejs.org/en/docs/guides/debugging-getting-started/
+- Debugging Node in Visual Studio Code: https://code.visualstudio.com/docs/nodejs/nodejs-debugging
