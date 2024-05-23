@@ -36,3 +36,10 @@
 
 - fs.writeFileSync block code execution until file is created; even no incoming requests will be handled until file is completely created; It acceps the path & data as arguments
 - fs.writeFile does not block the code execution; it takes 3rd argument also i.e a callback that should be executed when file creation is done
+
+# Useful resources
+
+- Official Node.js Docs: https://nodejs.org/en/docs/guides/
+- Full Node.js Reference (for all core modules): https://nodejs.org/dist/latest/docs/api/
+- More about the Node.js Event Loop: https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+- Blocking and Non-Blocking Code: https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
