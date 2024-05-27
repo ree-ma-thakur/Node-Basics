@@ -108,3 +108,10 @@
 - npm i --save body-parser
 - bodyParser.urlencoded({ extended: false }) registers a middleware; { extended: false } to set confg , to enable bodyparser
 - app.get() will get fored for only incoming requests
+- GET : app.get(); POST: app.post(); also we have put, patch, delete
+
+# Express router
+
+- express.Router(), store it in a const router
+- router.use for all requests; router.get for GET, .post for POST etc
+- .get macthes the exact route but .use does not
