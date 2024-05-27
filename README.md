@@ -87,3 +87,12 @@
 
 - More on debugging Node.js: https://nodejs.org/en/docs/guides/debugging-getting-started/
 - Debugging Node in Visual Studio Code: https://code.visualstudio.com/docs/nodejs/nodejs-debugging
+
+## Express.js
+
+- Nodejs framework
+- npm i --save express
+- Expressjs is all about middleware i.e an incoming request is automatically funneled through bunch of functions by expressjs
+- ![alt text](image-2.png)
+- use function of express() allows us to add new middleware function. It accepts array of request handlers
+- We can pass function inside use(), it take 3 arguments: req, res, next; next is a function that will be passed to this function by express
