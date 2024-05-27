@@ -96,3 +96,7 @@
 - ![alt text](image-2.png)
 - use function of express() allows us to add new middleware function. It accepts array of request handlers
 - We can pass function inside use(), it take 3 arguments: req, res, next; next is a function that will be passed to this function by express
+
+# handling routes
+
+- We can add route path at the beginning of use()
