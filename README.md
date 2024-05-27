@@ -100,3 +100,11 @@
 # handling routes
 
 - We can add route path at the beginning of use()
+
+# Parsing incoming reequests
+
+- by default request doesn't try to parse the incoming request body, therefore we need to register parser
+- Express by default used to have body-aprser pckg inside it, then they removed & then again re-added, but we will install it
+- npm i --save body-parser
+- bodyParser.urlencoded({ extended: false }) registers a middleware; { extended: false } to set confg , to enable bodyparser
+- app.get() will get fored for only incoming requests

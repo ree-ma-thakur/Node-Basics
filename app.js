@@ -1,20 +1,23 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
-app.use("/", (req, res, next) => {
-  console.log("always here");
-  next();
-});
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/add-product", (req, res, next) => {
-  console.log("in another middleware");
-  res.send("<h1>The 'Add Product' Page</h1>"); // It allows us to send a response
+  res.send(
+    '<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>'
+  );
+});
+
+app.post("/product", (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/");
 });
 
 app.use("/", (req, res, next) => {
-  console.log("in main middleware");
-  res.send("<h1>Hello from express</h1>"); // It allows us to send a response
+  res.send("<h1>Hello from Express!</h1>");
 });
 
-app.listen(8080); // listen from express is same as : const server = http.createServer(app); server.listen(8080);
+app.listen(8080);
