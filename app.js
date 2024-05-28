@@ -8,6 +8,7 @@ const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "public"))); // This allows us to get public css file in shop.html
 
 app.use("/admin", adminRoutes); // filtering segment
 app.use(shopRoutes);

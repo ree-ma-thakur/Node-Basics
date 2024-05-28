@@ -125,3 +125,5 @@
 - We manage our VIEWS, that we want to serve to the user in one place of application in views folder
 - path.join() yields us path in the end, by concatenating different segments; '\_\_dirname' is a global variable which simply holds the absolute path on our OS to the project folder
 - We can create helper function in util as global path in path file.
+- We can serve files statically also from public folder
+- ![alt text](image-3.png)
