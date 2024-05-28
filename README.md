@@ -115,3 +115,12 @@
 - express.Router(), store it in a const router
 - router.use for all requests; router.get for GET, .post for POST etc
 - .get macthes the exact route but .use does not
+
+# Filtering methods
+
+- It allows us to put a common starting segment for our path which all routes in a given file use to outsource that into app.js so that we don't have to repeat it for all routes in other files
+
+# Crearting HTML pages
+
+- We manage our VIEWS, that we want to serve to the user in one place of application in views folder
+- path.join() yields us path in the end, by concatenating different segments; '\_\_dirname' is a global variable which simply holds the absolute path on our OS to the project folder
