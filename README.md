@@ -133,6 +133,12 @@
 # Templating Engines (TE)
 
 - To put dynamic content into our HTML pages
+- Useful resources:
+
+  - Pug Docs: https://pugjs.org/api/getting-started.html
+  - Handlebars Docs: https://handlebarsjs.com/
+  - EJS Docs: http://ejs.co/#docs
+
 - ![Templating engines](image-4.png)
 - Different Tamplating engines: EJS, Pug(Jade), Handlebars
 - ![EJS Pug Handlebars](image-5.png)
@@ -161,3 +167,8 @@
 # Layouts with partials
 
 - For this we make separated shared files
+
+## MVC (Model View Controller)
+
+- It is for separation of concerns
+- ![MVC](image-6.png)
