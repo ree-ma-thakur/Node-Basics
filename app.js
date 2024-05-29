@@ -5,6 +5,9 @@ const app = express();
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
+app.set("view engine", "pug"); // Pug templating engine
+app.set("views", "views"); // views folder for TE views
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public"))); // This allows us to get public css file in shop.html
 
@@ -13,7 +16,7 @@ app.use(shopRoutes);
 
 // for 404 request
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.status(404).render("404", { pageTitle: "Page Not Found" });
 });
 
 app.listen(8080);

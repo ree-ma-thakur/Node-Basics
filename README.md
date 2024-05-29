@@ -29,7 +29,7 @@
 # Parsing requet bodies
 
 - Incoming data is sent as stream of data that JS knows but JS doesn't
-- ![alt text](image.png)
+- ![Stream & buffers](image.png)
 - Buffer is a constrcut that allows us to hold multiple chunks & work with them before they are released once we are done
 
 # Blocking & non blocking code
@@ -54,7 +54,7 @@
 
 # Installing 3 party packages (nodemon)
 
-- ![alt text](image-1.png)
+- ![npm & packages](image-1.png)
 - After making changes to our code we save it, exit the terminal & restart the server to see changes
 - To get instant changes without quitting the server we install 3rd party 'nodemon'
 - npm i nodemon --save-dev
@@ -93,7 +93,7 @@
 - Nodejs framework
 - npm i --save express
 - Expressjs is all about middleware i.e an incoming request is automatically funneled through bunch of functions by expressjs
-- ![alt text](image-2.png)
+- ![Middleware](image-2.png)
 - use function of express() allows us to add new middleware function. It accepts array of request handlers
 - We can pass function inside use(), it take 3 arguments: req, res, next; next is a function that will be passed to this function by express
 
@@ -126,4 +126,20 @@
 - path.join() yields us path in the end, by concatenating different segments; '\_\_dirname' is a global variable which simply holds the absolute path on our OS to the project folder
 - We can create helper function in util as global path in path file.
 - We can serve files statically also from public folder
-- ![alt text](image-3.png)
+- ![ExpressJs summary](image-3.png)
+
+## Working with dynamic content & adding template engines
+
+# Templating Engines
+
+- To put dynamic content into our HTML pages
+- ![Templating engines](image-4.png)
+- Different Tamplating engines: EJS, Pug(Jade), Handlebars
+- ![EJS Pug Handlebars](image-5.png)
+- npm i --save ejs pug express-handlebars
+- app.set() allows us to set any values gloablly on our express application & get it later
+- 'view engine' is default engine extension to use which allows to tell express that any dynamic template that we ar trying to render, use that only
+- 'views' allows to tell express where to find dynamic views
+- .render() will use default templating engine
+- https://pugjs.org/api/getting-started.html
+- block & extends for common pug file & to use it anywhere, we can name anything with block like block style & use it as block style where we extend another pug file
