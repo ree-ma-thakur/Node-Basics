@@ -157,3 +157,7 @@
 
 - It is supported by express, therefore no need to import
 - It does not support layouts
+
+# Layouts with partials
+
+- For this we make separated shared files
