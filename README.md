@@ -29,7 +29,7 @@
 # Parsing requet bodies
 
 - Incoming data is sent as stream of data that JS knows but JS doesn't
-- ![Stream & buffers](image.png)
+- ![Stream & buffers](images/image.png)
 - Buffer is a constrcut that allows us to hold multiple chunks & work with them before they are released once we are done
 
 # Blocking & non blocking code
@@ -54,7 +54,7 @@
 
 # Installing 3 party packages (nodemon)
 
-- ![npm & packages](image-1.png)
+- ![npm & packages](images/image-1.png)
 - After making changes to our code we save it, exit the terminal & restart the server to see changes
 - To get instant changes without quitting the server we install 3rd party 'nodemon'
 - npm i nodemon --save-dev
@@ -93,7 +93,7 @@
 - Nodejs framework
 - npm i --save express
 - Expressjs is all about middleware i.e an incoming request is automatically funneled through bunch of functions by expressjs
-- ![Middleware](image-2.png)
+- ![Middleware](images/image-2.png)
 - use function of express() allows us to add new middleware function. It accepts array of request handlers
 - We can pass function inside use(), it take 3 arguments: req, res, next; next is a function that will be passed to this function by express
 
@@ -126,7 +126,7 @@
 - path.join() yields us path in the end, by concatenating different segments; '\_\_dirname' is a global variable which simply holds the absolute path on our OS to the project folder
 - We can create helper function in util as global path in path file.
 - We can serve files statically also from public folder
-- ![ExpressJs summary](image-3.png)
+- ![ExpressJs summary](images/image-3.png)
 
 ## Working with dynamic content & adding template engines
 
@@ -139,9 +139,9 @@
   - Handlebars Docs: https://handlebarsjs.com/
   - EJS Docs: http://ejs.co/#docs
 
-- ![Templating engines](image-4.png)
+- ![Templating engines](images/image-4.png)
 - Different Tamplating engines: EJS, Pug(Jade), Handlebars
-- ![EJS Pug Handlebars](image-5.png)
+- ![EJS Pug Handlebars](images/image-5.png)
 - npm i --save ejs pug express-handlebars
 
 # Pug
@@ -171,4 +171,6 @@
 ## MVC (Model View Controller)
 
 - It is for separation of concerns
-- ![MVC](image-6.png)
+- ![MVC](images/image-6.png)
+- ![alt text](images/image-7.png)
+- https://developer.mozilla.org/en-US/docs/Glossary/MVC
