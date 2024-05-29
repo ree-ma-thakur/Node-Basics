@@ -152,3 +152,8 @@
 - pug is auto installed by express therefore no need to import pug, but we need to import handlebars
 - app.engine() resgister new TE
 - For common layout we mention its path in app.engine()
+
+# EJS
+
+- It is supported by express, therefore no need to import
+- It does not support layouts
