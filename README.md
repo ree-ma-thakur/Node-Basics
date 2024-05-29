@@ -130,16 +130,25 @@
 
 ## Working with dynamic content & adding template engines
 
-# Templating Engines
+# Templating Engines (TE)
 
 - To put dynamic content into our HTML pages
 - ![Templating engines](image-4.png)
 - Different Tamplating engines: EJS, Pug(Jade), Handlebars
 - ![EJS Pug Handlebars](image-5.png)
 - npm i --save ejs pug express-handlebars
+
+# Pug
+
 - app.set() allows us to set any values gloablly on our express application & get it later
 - 'view engine' is default engine extension to use which allows to tell express that any dynamic template that we ar trying to render, use that only
 - 'views' allows to tell express where to find dynamic views
 - .render() will use default templating engine
 - https://pugjs.org/api/getting-started.html
 - block & extends for common pug file & to use it anywhere, we can name anything with block like block style & use it as block style where we extend another pug file
+
+# Handlebars
+
+- pug is auto installed by express therefore no need to import pug, but we need to import handlebars
+- app.engine() resgister new TE
+- For common layout we mention its path in app.engine()
