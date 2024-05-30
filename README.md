@@ -179,3 +179,18 @@
 # Dynamic Routing
 
 - ![dynamic routing](images/image-8.png)
+
+## DB
+
+- ![SQL vs NoSQL](images/image-9.png)
+
+# SQL
+
+- SQL DB thinks in tables & in each table we have fields or columns; fileds is fill in by data or records or rows
+- SQL DB allow us to relate different tables; Eg: order can be desribed as connection betweem user & product (relation)
+- So we have relations in SQL DB
+- ![tables relation](images/image-10.png)
+- Core characteristics of SQL
+  - Strong data schema: for each table we clearly define how data in there should look like, which fields, which data type & all data in table has to fit the schema
+  - Data relations: one-to-one, one-to-many, many-to-many; tables are connected
+- SQL is structured query language; Queries are simply commands we use to interact with DB;Eg: SELECT \* FROM users WHERE age > 25
