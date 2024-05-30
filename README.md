@@ -175,3 +175,7 @@
 - ![MVC](images/image-6.png)
 - ![alt text](images/image-7.png)
 - https://developer.mozilla.org/en-US/docs/Glossary/MVC
+
+# Dynamic Routing
+
+- ![dynamic routing](images/image-8.png)
