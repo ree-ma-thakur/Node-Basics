@@ -25,6 +25,7 @@
 
 - GET request is automatically sent when we click link or enter url
 - POST request has to be set up by us by creating form
+- https://expressjs.com/en/guide/routing.html
 
 # Parsing requet bodies
 
@@ -60,7 +61,7 @@
 - npm i nodemon --save-dev
 - We wil change the start script from node app.js to nodemon app.js
 
-# Global, core & 2rd party modeules
+# Global, core & 3rd party modeules
 
 - Global Features vs Core Modules vs Third-Party Modules
   - Global features: Keywords like const or function but also some global objects like process
@@ -97,11 +98,11 @@
 - use function of express() allows us to add new middleware function. It accepts array of request handlers
 - We can pass function inside use(), it take 3 arguments: req, res, next; next is a function that will be passed to this function by express
 
-# handling routes
+# Handling routes
 
 - We can add route path at the beginning of use()
 
-# Parsing incoming reequests
+# Parsing incoming requests
 
 - by default request doesn't try to parse the incoming request body, therefore we need to register parser
 - Express by default used to have body-aprser pckg inside it, then they removed & then again re-added, but we will install it
