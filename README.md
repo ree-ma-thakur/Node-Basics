@@ -194,3 +194,28 @@
   - Strong data schema: for each table we clearly define how data in there should look like, which fields, which data type & all data in table has to fit the schema
   - Data relations: one-to-one, one-to-many, many-to-many; tables are connected
 - SQL is structured query language; Queries are simply commands we use to interact with DB;Eg: SELECT \* FROM users WHERE age > 25
+
+# NoSQL
+
+- In this we have tables (Eg: users & orders); Tables are called collections
+- In collections we don't have records but have documents (documents are very similiar as objects in JS)
+- NoSQL doesn't have strict schema; 2 documents in single collection can have different schema Eg: 1 collection have age but other doesn't
+- We can store multiple documents with different structures in same collection.
+- ![Schemaless collection in NoSQL](images/image-11.png)
+- In this we have no real relations, instead we can have duplicate data. Eg: we can have user in users & user in orders collection also; If the data changes then we have to update it in multiple places, but this is ok because if we ever have to retrieve data we don't have to join multiple tables
+- We can get all the data at one place in orders collection of user as well as of order; therefore data retrieval is fast
+- ![characteristic of NoSQL](images/image-12.png)
+- As application grows we need to store more data & access more data frequently therefore we might need to scale our DB servers.
+
+# Horizaontal vs Vertical Scaling
+
+- HS
+  - In this we add more & more servers & we can do this infinitely;
+  - We can buy new servers(on cloud provider or own data center) & connect to our DB & split our data across all the servers
+- VS
+  - We make our exisiting server more stronger by adding more CPU or memory
+  - But problem is that we have some limit, we can't fit infinitely much CPU power into single machine
+- ![HS vs VS](images/image-13.png)
+- ![SQL vs NoSQL](images/image-14.png)
+- If we are storing data where relations are really important, want strong schemas, & want split up tables then SQL is perfect; also not every part of data is accessed multiple times per second; If data does not change that often then SQL is good.
+- If we have data that changes frequently then we can use NoSQL, there, relations might not be important because we can always put all information that belongs to shopping cart or to an order in one single document
