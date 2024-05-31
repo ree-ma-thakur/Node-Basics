@@ -228,3 +228,20 @@
 - https://github.com/sidorares/node-mysql2
 - We should close the connection when we are done with the query but problem is we have to run multiple queries & we need to re-execute the code to connection for every new query again & again -> inefficient
 - Therefore we create connection pool which return the promise
+
+# Sequelize
+
+- It is an Object Relational Mapping Library
+- ![ORM](images/image-15.png)
+- Sequelize offers us models to work with our DB
+- We then instantiate these models, then we can run queries on that & we can also associate our models
+- ![Sequelize](images/image-16.png)
+- npm i --save sequelize (It needs mysql2 pckg which we have already installed)
+- sync method in sequelize looks at all the model that we defined & then creates table for them
+- If we run our server again it again execute the models but will not overwrite the tables as in there we automatically have if not exists
+- create: it creates a new elt based on model & immediately saves it to DB
+- build: it also create new elt based on model but only in JS & then we need to save it manually
+- findAll: find all the rows of tables
+- fundById/findByPk: find specific row with id
+- save: update the existing row, if no row then create new one
+- destroy: delete the row

@@ -3,6 +3,8 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const app = express();
 
+const sequelize = require("./util/database");
+
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const errorController = require("./controllers/error");
@@ -19,4 +21,11 @@ app.use(shopRoutes);
 // for 404 request
 app.use(errorController.get404);
 
-app.listen(8080);
+// We make sure that when our app starts then all the models get created in our DB
+sequelize
+  .sync()
+  .then((result) => {
+    console.log(result);
+    app.listen(8080);
+  })
+  .catch((err) => console.log(err));
