@@ -245,3 +245,9 @@
 - fundById/findByPk: find specific row with id
 - save: update the existing row, if no row then create new one
 - destroy: delete the row
+- Associations
+  - means relation;
+  - A single product can belong to many cart; many users can have multiple carts therefore product can belong to many carts : belongs to many
+  - Each user can have only one cart : has one
+  - User can have multiple orders : has many; user can have multiple products
+- ![Associations](images/image-17.png)
