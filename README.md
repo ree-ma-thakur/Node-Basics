@@ -219,3 +219,12 @@
 - ![SQL vs NoSQL](images/image-14.png)
 - If we are storing data where relations are really important, want strong schemas, & want split up tables then SQL is perfect; also not every part of data is accessed multiple times per second; If data does not change that often then SQL is good.
 - If we have data that changes frequently then we can use NoSQL, there, relations might not be important because we can always put all information that belongs to shopping cart or to an order in one single document
+
+# MySQL
+
+- Install msi
+- After installation of workbech, server & shell, connect our app to MySQL
+- npm i --save mysql2 (It allows us to write SQL code in node)
+- https://github.com/sidorares/node-mysql2
+- We should close the connection when we are done with the query but problem is we have to run multiple queries & we need to re-execute the code to connection for every new query again & again -> inefficient
+- Therefore we create connection pool which return the promise
