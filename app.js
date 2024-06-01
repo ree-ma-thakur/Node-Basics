@@ -7,6 +7,8 @@ const sequelize = require("./util/database");
 
 const Product = require("./models/product");
 const User = require("./models/user");
+const Cart = require("./models/cart");
+const CartItem = require("./models/cart-item");
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
@@ -36,6 +38,10 @@ app.use(errorController.get404);
 // Before sequelize sync, we relate models
 Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" }); // Cascade means if user is deleted then any products related to user will also be gone
 User.hasMany(Product);
+User.hasOne(Cart);
+Cart.belongsTo(User); // (one to many) these 2 lines will add new field to the cart which is the user id to the cart belongs
+Cart.belongsToMany(Product, { through: CartItem }); // these connection should be stored in CartItem
+Product.belongsToMany(Cart, { through: CartItem }); // these 2 lines as many to many relation
 
 // We make sure that when our app starts then all the models get created in our DB
 sequelize
@@ -51,6 +57,7 @@ sequelize
     return user; //it will not promise so we have to make it, but value returned in then block is always Promise
   })
   .then((user) => {
-    app.listen(8080);
+    return user.createCart();
   })
+  .then((cart) => app.listen(8080))
   .catch((err) => console.log(err));
