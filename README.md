@@ -251,3 +251,4 @@
   - Each user can have only one cart : has one
   - User can have multiple orders : has many; user can have multiple products
 - ![Associations](images/image-17.png)
+- ![SQL, sequelize](image-18.png)
