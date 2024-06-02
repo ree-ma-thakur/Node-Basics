@@ -252,3 +252,24 @@
   - User can have multiple orders : has many; user can have multiple products
 - ![Associations](images/image-17.png)
 - ![SQL, sequelize](image-18.png)
+- http://docs.sequelizejs.com/
+
+# MongoDB
+
+- DB engine tool that we can use to run NoSQL DB
+- It is build to store & use large data; built for large scale application, to quickly query data, store data & interact with data; mongo from work humongous
+- In DB we have multiple collections. Inside each collection we have couple of documents which are schemaless
+- MongoDb use JSON(JS object notation) to store data in collections
+- To be precise mongodb uses BSON for binary json which it transforms BTS before storing it into files
+- ![JSON(BSON) data format](images/image-19.png)
+- Relations Options
+  - Nested/embedded document
+    - ![Nested document](images/image-20.png)
+    - If we have lot of data duplications, then we have to update it at all places
+  - References
+    - We will add reference of data in one table of another
+    - We should not relate the documents too much as our queries become slow
+    - ![alt text](images/image-21.png)
+- npm i --save mongodb
+- https://www.mongodb.com/docs/atlas/troubleshoot-connection/#special-characters-in-connection-string-password
+- We have to make one connection on our DB, otherwise on every operation we have to connect to MongoDB
