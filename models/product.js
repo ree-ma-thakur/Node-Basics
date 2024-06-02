@@ -1,61 +1,77 @@
-const mongoDB = require("mongodb");
-const getDB = require("../util/database").getDB;
+const mongodb = require("mongodb");
+const getDb = require("../util/database").getDB;
+
 class Product {
-  constructor(title, price, description, imageUrl, id) {
+  constructor(title, price, description, imageUrl, id, userId) {
     this.title = title;
     this.price = price;
     this.description = description;
     this.imageUrl = imageUrl;
-    this._id = id ? new mongoDB.ObjectId(id) : null;
+    this._id = id ? new mongodb.ObjectId(id) : null;
+    this.userId = userId;
   }
 
   save() {
-    const db = getDB();
-    let dbOperation;
-    if (this?._id) {
-      dbOperation = db
+    const db = getDb();
+    let dbOp;
+    if (this._id) {
+      // Update the product
+      dbOp = db
         .collection("products")
-        .updateOne({ _id: this?._id }, { $set: this }); // $set is to update the specific elt
+        .updateOne({ _id: this._id }, { $set: this });
     } else {
-      dbOperation = db.collection("products").insertOne(this); // returns promise
+      dbOp = db.collection("products").insertOne(this);
     }
-    return dbOperation
+    return dbOp
       .then((result) => {
         console.log(result);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   static fetchAll() {
-    const db = getDB();
-    // return db.collection("products").find({title:'A book'});   // will find the document having this title; sort of filter
+    const db = getDb();
     return db
       .collection("products")
-      .find() // find does  not immediately return promise, instead it gives a cursor/handle to tell mongoDb to give the next document as we can have millions of data
-      .toArray() // to convert all documets & turn to JS array, use if we have couple of dozens of 100 documents, otherwise we should use pagination
+      .find()
+      .toArray()
       .then((products) => {
+        console.log(products);
         return products;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   static findById(prodId) {
-    const db = getDB();
+    const db = getDb();
     return db
       .collection("products")
-      .find({ _id: new mongoDB.ObjectId(prodId) }) // return a cursor; _id is added by mongoDB in different format as ObjectId("idString") which is not equal to prodId therefore we have to use new mongoDB
-      .next() // to get the last document
-      .then((product) => product)
-      .catch((err) => console.log(err));
+      .find({ _id: new mongodb.ObjectId(prodId) })
+      .next()
+      .then((product) => {
+        console.log(product);
+        return product;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   static deleteById(prodId) {
-    const db = getDB();
+    const db = getDb();
     return db
       .collection("products")
-      .deleteOne({ _id: new mongoDB.ObjectId(prodId) })
-      .then(() => console.log("Deleted"))
-      .catch((err) => console.log(err));
+      .deleteOne({ _id: new mongodb.ObjectId(prodId) })
+      .then((result) => {
+        console.log("Deleted");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 
