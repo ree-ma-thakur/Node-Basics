@@ -273,3 +273,7 @@
 - npm i --save mongodb
 - https://www.mongodb.com/docs/atlas/troubleshoot-connection/#special-characters-in-connection-string-password
 - We have to make one connection on our DB, otherwise on every operation we have to connect to MongoDB
+- ![MongoDB](images/image-22.png)
+- https://docs.mongodb.com/manual/core/security-encryption-at-rest/https://docs.mongodb.com/manual/
+- https://academind.com/learn/web-dev/sql-vs-nosql/
+- https://academind.com/learn/mongodb
