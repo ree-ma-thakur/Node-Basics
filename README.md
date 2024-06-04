@@ -277,3 +277,10 @@
 - https://docs.mongodb.com/manual/core/security-encryption-at-rest/https://docs.mongodb.com/manual/
 - https://academind.com/learn/web-dev/sql-vs-nosql/
 - https://academind.com/learn/mongodb
+
+# Mongoose
+
+- It is ODM (Object Document Mapping Library)
+- ![ODM](images/image-23.png)
+- ![Core concepts](images/image-24.png)
+- npm i --save mongoose
