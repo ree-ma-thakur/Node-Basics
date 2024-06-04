@@ -284,3 +284,4 @@
 - ![ODM](images/image-23.png)
 - ![Core concepts](images/image-24.png)
 - npm i --save mongoose
+- https://mongoosejs.com/docs/
