@@ -285,3 +285,8 @@
 - ![Core concepts](images/image-24.png)
 - npm i --save mongoose
 - https://mongoosejs.com/docs/
+
+# Session & cookies
+
+- ![Cookie](images/image-25.png)
+- Adding isLoggedIn to req won't work as when we redirect request finished there only & doesn't sent around to app
