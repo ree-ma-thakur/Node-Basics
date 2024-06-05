@@ -1,5 +1,5 @@
 exports.getLogin = (req, res, next) => {
-  const isLoggedIn = req.get("Cookie").split(";")[1].trim().split("=")[1];
+  const isLoggedIn = req?.session?.isLoggedIn;
   res.render("auth/login", {
     path: "/login",
     pageTitle: "Login",
@@ -8,6 +8,6 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
-  res.setHeader("Set-Cookie", "loggedIn=true"); // cookie will be added to application of browser & then this will automatically be send with every request
+  req.session.isLoggedIn = true;
   res.redirect("/"); // here request is finish, above loggedIn data is not sent around
 };

@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 const errorController = require("./controllers/error");
 const User = require("./models/user");
@@ -18,6 +19,9 @@ const authRoutes = require("./routes/auth");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({ secret: "my-secret", resave: false, saveUninitialized: false })
+); // secret to setup signing hash that will secretly store id, resave false means session will not be saved on every response that is sent but only when something is changed in session; saveUninitialized false means no session is saved for request; we can also configure cookie in this
 
 app.use((req, res, next) => {
   User.findById("665e6de614badb4c3b17d3ce")
