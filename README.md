@@ -303,3 +303,6 @@
 - Instead of storing the info in frontend, now we will store in backend using session using DB, which further will be stored on frontend as cookie but that info will be in Hash Id only server from DB will be able to decode it
 - ![Session](images/image-26.png)
 - npm i --save express-session
+- Disadv: Session is stored in memory & memory is not infinite resource therefore not good for production as we may havye 1000s
+  of users
+- Therefore we will use: npm i --save connect-mongodb-session
