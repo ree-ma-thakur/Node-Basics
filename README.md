@@ -290,3 +290,8 @@
 
 - ![Cookie](images/image-25.png)
 - Adding isLoggedIn to req won't work as when we redirect request finished there only & doesn't sent around to app
+- We could use global variable to store in extra file & which then change then that variable will survive requests cycle but that variable will be shared across all requests, therefore also be shared across all users, here cookie can help
+- With cookies we can store data in the browser of single user & store data in that browser which is customized to that user which does not affect all the other users but can be sent with the request that it is authenticated
+- We can easily manipulate the cookies from browser which is not secure therefore it should not be stored in browser as user can edit them & see.
+- We can also configure cookies with other key values pairs other than isLoggedIn example Expires, Max-Age (it is number of seconds that how long cookie should stay alive), Domain, Secure (then cookie will work only for https), HttpOnly(more secure as now it will not work in browser & won't be able to edit)
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
