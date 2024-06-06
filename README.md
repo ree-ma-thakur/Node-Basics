@@ -319,3 +319,10 @@
 
 - We should not directly save our password to DB so that no one can read it, so it should be saved in encrypted way
 - npm i --save bcryptjs
+
+# Route Protection
+
+- If user is logged in then only user can see pages even after entering url manually
+- we can do this by checking whether user is authenticated or not on every route
+- For this we should add middleware of authentication & add it to all routes which we want to protect before getting into the controllers
+- Request funnel from left to right
