@@ -307,18 +307,20 @@
   of users
 - Therefore we will use: npm i --save connect-mongodb-session
 
-## Authentication
+## Authentication & Authorization
 
 # Basics
 
 - Authentication is needed to diiferentiate b/w anonymous users & logged in users
 - ![Authentication](images/image-27.png)
 - ![Authentication Imeplementation](images/image-28.png)
+- Authorization means we restrict the permissions of logged in users.
 
 # Encrypting passwords
 
 - We should not directly save our password to DB so that no one can read it, so it should be saved in encrypted way
 - npm i --save bcryptjs
+- https://github.com/dcodeIO/bcrypt.js
 
 # Route Protection
 
@@ -330,6 +332,7 @@
 # CSRF Attacks
 
 - Cross Site Script Forgery
+- https://www.acunetix.com/websitesecurity/csrf-attacks/
 - In this attack, attacker can abuse our session & trick users of our app to execute malicious code
 - We can protect our ursers by ensuring that people can only use our session if they are working with views(frontend or ejs) rendered by our app
 - ![CSRF](images/image-29.png)
@@ -352,3 +355,17 @@
 - We can send error msg to session but we dont want it to be removed from session once the error msg is displayed so we have package for this
 - npm i --save connect-flash
 - ![Summary](images/image-30.png)
+
+## Sending Email
+
+- We don't create our own email server but user third party service
+- Sendgrid
+- npm i --save nodemailer nodemailer-sendgrid-transport
+- Nodemailer makes sending emails from inside nodejs
+- https://nodemailer.com/about/
+- https://sendgrid.com/docs/
+
+## Validation
+
+- ![Validation](image.png)
+- ![How to validate](image-1.png)
