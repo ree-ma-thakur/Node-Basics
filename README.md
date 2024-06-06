@@ -306,3 +306,16 @@
 - Disadv: Session is stored in memory & memory is not infinite resource therefore not good for production as we may havye 1000s
   of users
 - Therefore we will use: npm i --save connect-mongodb-session
+
+## Authentication
+
+# Basics
+
+- Authentication is needed to diiferentiate b/w anonymous users & logged in users
+- ![Authentication](images/image-27.png)
+- ![Authentication Imeplementation](images/image-28.png)
+
+# Encrypting passwords
+
+- We should not directly save our password to DB so that no one can read it, so it should be saved in encrypted way
+- npm i --save bcryptjs

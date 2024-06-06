@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const MongoDbStore = require("connect-mongodb-session")(session); // In this we pass our above session
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 const errorController = require("./controllers/error");
 const User = require("./models/user");
@@ -13,7 +13,7 @@ const MONGODB_URI =
   "mongodb+srv://reemathakur0214:Noderoot%40123@cluster0.n4dgexg.mongodb.net/shop?retryWrites=true&w=majority&appName=Cluster0";
 
 const app = express();
-const store = new MongoDbStore({
+const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
 });
@@ -34,10 +34,13 @@ app.use(
     saveUninitialized: false,
     store,
   })
-); // secret to setup signing hash that will secretly store id, resave false means session will not be saved on every response that is sent but only when something is changed in session; saveUninitialized false means no session is saved for request; we can also configure cookie in this
+); // secret to setup signing hash that will secretly store id, resave false means session will not be saved on every response that is sent but only when something is changed in session; saveUninitialized false means no session is saved for request; we can also configure cookie in this; it automatically adds some cookies BTS
 
 app.use((req, res, next) => {
-  User.findById("665e6de614badb4c3b17d3ce")
+  if (!req.session.user) {
+    return next();
+  }
+  User.findById(req.session.user._id)
     .then((user) => {
       req.user = user;
       next();
@@ -53,18 +56,10 @@ app.use(errorController.get404);
 
 mongoose
   .connect(MONGODB_URI)
-  .then(() => {
+  .then((result) => {
     console.log("Connected to DB");
-    User.findOne().then((user) => {
-      if (!user) {
-        const userObj = new User({
-          name: "Reema",
-          email: "reema@test.com",
-          cart: { items: [] },
-        });
-        userObj.save();
-      }
-    });
     app.listen(8080);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log(err);
+  });
