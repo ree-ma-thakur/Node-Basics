@@ -346,3 +346,9 @@
 - This package is not now maintained & is DEPRACATED, therefore we can use other packages
 - https://www.npmjs.com/search?q=express%20csrf
 - https://www.npmjs.com/package/csrf-csrf
+
+# Providing user feedback
+
+- We can send error msg to session but we dont want it to be removed from session once the error msg is displayed so we have package for this
+- npm i --save connect-flash
+- ![Summary](images/image-30.png)
