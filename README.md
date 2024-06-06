@@ -326,3 +326,23 @@
 - we can do this by checking whether user is authenticated or not on every route
 - For this we should add middleware of authentication & add it to all routes which we want to protect before getting into the controllers
 - Request funnel from left to right
+
+# CSRF Attacks
+
+- Cross Site Script Forgery
+- In this attack, attacker can abuse our session & trick users of our app to execute malicious code
+- We can protect our ursers by ensuring that people can only use our session if they are working with views(frontend or ejs) rendered by our app
+- ![CSRF](images/image-29.png)
+- To ensure this we will use CSRF token
+- npm i --save csurf : allows to generate CSRF token, string value that we can embed to our pages that we want to protect, no one can steal it as it gets generated for every page user render
+- Add csrf protection after session initialisation
+- It will work fine for all get requests but not for non-get(post(because we change data by post request) etc) request eg: logout
+- For non-get requests, above pakcage will look for the existence of csrf token in our request body, therefore it should be in our views
+- Eg : <input type="hidden" name="_csrf" value="<%= csrfToken %>" /> (with logout) ; name must be \_csrf
+- But we have to send csrfToken in all our non-get requests
+- We need csrfToken & isAuthenticated key in every page we render
+- Therefore we all routes in app.js we will add another middleware, in that we can access special field provided by expressjs (locals)
+- res.locals.isAuthenticated=req.session.isLoggedIn
+- This package is not now maintained & is DEPRACATED, therefore we can use other packages
+- https://www.npmjs.com/search?q=express%20csrf
+- https://www.npmjs.com/package/csrf-csrf
