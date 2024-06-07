@@ -365,7 +365,16 @@
 - https://nodemailer.com/about/
 - https://sendgrid.com/docs/
 
+## GIT
+
+- git log
+- move to that head where you want to edit (if changes are not pushed to git)
+- git reset --soft headID_from_git_log
+
 ## Validation
 
-- ![Validation](image.png)
-- ![How to validate](image-1.png)
+- ![Validation](images/image-31.png)
+- ![How to validate](images/image-32.png)
+- npm i --save express-validator
+- Need to validate post routes
+-

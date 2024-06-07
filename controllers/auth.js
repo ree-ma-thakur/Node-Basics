@@ -1,9 +1,9 @@
 const crypto = require("crypto");
-require("dotenv").config();
 
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
+const { validationResult } = require("express-validator"); // result from middleware in routes
 
 const User = require("../models/user");
 
@@ -55,7 +55,6 @@ exports.postLogin = (req, res, next) => {
       bcrypt
         .compare(password, user.password)
         .then((doMatch) => {
-          // return true if matches else false
           if (doMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
@@ -79,6 +78,15 @@ exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors.array()); // 422 is validation error
+    return res.status(422).render("auth/signup", {
+      path: "/signup",
+      pageTitle: "Signup",
+      errorMessage: errors.array()[0].msg,
+    });
+  }
   User.findOne({ email: email })
     .then((userDoc) => {
       if (userDoc) {
@@ -89,7 +97,7 @@ exports.postSignup = (req, res, next) => {
         return res.redirect("/signup");
       }
       return bcrypt
-        .hash(password, 12) // field to be encrypted, rounds of hashing on field: async operation
+        .hash(password, 12)
         .then((hashedPassword) => {
           const user = new User({
             email: email,

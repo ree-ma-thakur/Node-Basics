@@ -8,12 +8,12 @@ const isAuth = require("../middleware/is-auth");
 const router = express.Router();
 
 // /admin/add-product => GET
-router.get("/add-product", isAuth, adminController.getAddProduct); // request will travel from left to right; is Auth middleware will be executed first then next middleware if goes into next()
+router.get("/add-product", isAuth, adminController.getAddProduct);
 
-// // /admin/products => GET
+// /admin/products => GET
 router.get("/products", isAuth, adminController.getProducts);
 
-// // /admin/add-product => POST
+// /admin/add-product => POST
 router.post("/add-product", isAuth, adminController.postAddProduct);
 
 router.get("/edit-product/:productId", isAuth, adminController.getEditProduct);
