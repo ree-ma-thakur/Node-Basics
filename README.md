@@ -377,4 +377,5 @@
 - ![How to validate](images/image-32.png)
 - npm i --save express-validator
 - Need to validate post routes
--
+- https://express-validator.github.io/docs/
+- https://github.com/chriso/validator.js
