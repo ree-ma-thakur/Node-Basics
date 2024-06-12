@@ -426,3 +426,8 @@
 - npm i --save pdfkit
 - It is also a readable stream therefore we can pipe it
 - http://pdfkit.org/docs/getting_started.html
+
+## Async requests
+
+- ![Async requests](images/image-36.png)
+- deleting the product using vanilla js in js file
