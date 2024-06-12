@@ -7,6 +7,7 @@ const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 const flash = require("connect-flash");
+const multer = require("multer");
 
 const errorController = require("./controllers/error");
 const User = require("./models/user");
@@ -22,6 +23,29 @@ const store = new MongoDBStore({
 
 const csrfProtection = csrf({});
 
+// diskStorage is storage engine for multer, takes obj having  2 keys destination(regarding storing path) & filename
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images"); // null is for error msg, images is folder
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + "-" + file.originalname); // error null, filename we want to add in folder
+  },
+});
+
+// to filter the file types
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg" ||
+    file.mimetype === "image/jpeg"
+  ) {
+    cb(null, true); // true if we  want to store the file
+  } else {
+    cb(null, false); // false, if we don't want to store the file
+  }
+};
+
 app.set("view engine", "ejs");
 app.set("views", "views");
 
@@ -30,6 +54,9 @@ const shopRoutes = require("./routes/shop");
 const authRoutes = require("./routes/auth");
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(
+  multer({ storage: fileStorage, fileFilter: fileFilter }).single("image")
+); // exprect one file; image is the input name in view; dest is tha path to store the image
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
@@ -42,6 +69,7 @@ app.use(
 
 // After initialising the session add csrf
 app.use(csrfProtection);
+
 app.use(flash()); // Now we can use flash anywhere on the request obj
 
 app.use((req, res, next) => {
