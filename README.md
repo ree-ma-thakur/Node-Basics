@@ -409,3 +409,11 @@
 - It parses incoming request for files
 - In view we'll add enctype='miultipart/form-data' to get the file telling server that this request will conatin mixed data: text & binary data
 - Add the middleware in app.js for multer
+
+# Download file
+
+- We can download file using fs
+- We can set header as application/pdf for Content-Type: it allows to show the pdf in same tab
+- Content-Disposition is used to define how content should be served, inline is for sma etab, attachment is for download
+- For small file reading file is ok, in this case node will first access that file read the entire content into memory & the return it with response, for bigger files this will be issue as it will take very long before a response is sent & memory on sever might actually overflow for many incoming requests
+- Therefore instead of reading we chould stream our data
