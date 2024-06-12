@@ -170,7 +170,7 @@ exports.getInvoice = (req, res, next) => {
         'inline; filename="' + invoiceName + '"'
       );
       pdfDoc.pipe(fs.createWriteStream(invoicePath));
-      pdfDoc.pipe(res);
+      pdfDoc.pipe(res); // pipe the output into my response
 
       pdfDoc.fontSize(26).text("Invoice", {
         underline: true,
@@ -193,7 +193,7 @@ exports.getInvoice = (req, res, next) => {
       pdfDoc.text("---");
       pdfDoc.fontSize(20).text("Total Price: $" + totalPrice);
 
-      pdfDoc.end();
+      pdfDoc.end(); // writable streams for creating file& for sending the response will be closed
       // using fs
       // fs.readFile(invoicePath, (err, data) => {
       //   if (err) {

@@ -409,6 +409,7 @@
 - It parses incoming request for files
 - In view we'll add enctype='miultipart/form-data' to get the file telling server that this request will conatin mixed data: text & binary data
 - Add the middleware in app.js for multer
+- https://github.com/expressjs/multer
 
 # Download file
 
@@ -417,3 +418,11 @@
 - Content-Disposition is used to define how content should be served, inline is for sma etab, attachment is for download
 - For small file reading file is ok, in this case node will first access that file read the entire content into memory & the return it with response, for bigger files this will be issue as it will take very long before a response is sent & memory on sever might actually overflow for many incoming requests
 - Therefore instead of reading we chould stream our data
+- https://medium.freecodecamp.org/node-js-streams-everything-you-need-to-know-c9141306be93
+- fs.unlink to delete the file & path
+
+# PDFKit for pdf generation
+
+- npm i --save pdfkit
+- It is also a readable stream therefore we can pipe it
+- http://pdfkit.org/docs/getting_started.html
