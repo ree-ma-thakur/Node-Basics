@@ -440,3 +440,4 @@
 - Stripe offers payment services
 - ![Stripe flow](images/image-38.png)
 - npm i --save stripe
+- https://stripe.com/docs
