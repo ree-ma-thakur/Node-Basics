@@ -431,3 +431,12 @@
 
 - ![Async requests](images/image-36.png)
 - deleting the product using vanilla js in js file
+- https://developers.google.com/web/updates/2015/03/introduction-to-fetch
+- https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started
+
+## Adding Payments
+
+- ![Payment process](images/image-37.png)
+- Stripe offers payment services
+- ![Stripe flow](images/image-38.png)
+- npm i --save stripe
