@@ -20,16 +20,15 @@ const store = new MongoDBStore({
   uri: MONGODB_URI,
   collection: "sessions",
 });
-
-const csrfProtection = csrf({});
+const csrfProtection = csrf();
 
 // diskStorage is storage engine for multer, takes obj having  2 keys destination(regarding storing path) & filename
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images"); // null is for error msg, images is folder
+    cb(null, "images"); // null is for error msg, images is folder; WE HAVE TO MANUALLY CREATE THIS FOLDER
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + "-" + file.originalname); // error null, filename we want to add in folder
+    cb(null, Date.now() + "-" + file.originalname); // error null, filename we want to add in folder
   },
 });
 
@@ -56,8 +55,10 @@ const authRoutes = require("./routes/auth");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single("image")
-); // exprect one file; image is the input name in view; dest is tha path to store the image
+); // exprect one file; image is the input name in view
 app.use(express.static(path.join(__dirname, "public")));
+// Serving images statically; if req goes to /images path then  statically serve the image
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(
   session({
     secret: "my-secret",
@@ -100,17 +101,16 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 app.use(authRoutes);
 
-app.use("/500", errorController.get500);
+app.get("/500", errorController.get500);
 
 app.use(errorController.get404);
 
 // express detect this as special middleware & move to this error handling middleware when we call next(error)
 app.use((error, req, res, next) => {
-  // res.redirect("/500");
   res.status(500).render("500", {
     pageTitle: "Error!",
     path: "/500",
-    isAuthenticated: req.session.isLoggedIn,
+    isAuthenticated: !!req.session?.isLoggedIn,
   });
 });
 
